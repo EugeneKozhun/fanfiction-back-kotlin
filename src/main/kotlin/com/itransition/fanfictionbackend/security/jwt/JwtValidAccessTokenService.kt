@@ -2,7 +2,7 @@ package com.itransition.fanfictionbackend.security.jwt
 
 import org.springframework.stereotype.Service
 import org.springframework.util.StringUtils.hasText
-import java.util.Optional.of
+import java.util.Optional.ofNullable
 import javax.servlet.http.HttpServletRequest
 
 /**
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest
 internal class JwtValidAccessTokenService : JwtValidService {
 
     override fun parseJwt(request: HttpServletRequest): String? {
-        return of(request.getHeader(HEADER))
+        return ofNullable(request.getHeader(HEADER))
             .filter { hasText(it) }
             .filter { it.startsWith(TOKEN_PREFIX) }
             .map { it.substring(TOKEN_PREFIX.length) }
