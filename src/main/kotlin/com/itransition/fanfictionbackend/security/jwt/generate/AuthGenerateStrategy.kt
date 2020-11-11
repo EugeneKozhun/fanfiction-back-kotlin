@@ -7,9 +7,6 @@ import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Service
 import java.util.Optional
 
-/**
- * Генерация по авторизованному пользователю.
- */
 @Service
 class AuthGenerateStrategy(
     private val jwtHelper: JwtHelper

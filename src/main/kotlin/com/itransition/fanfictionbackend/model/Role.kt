@@ -6,9 +6,6 @@ import javax.persistence.EnumType.STRING
 import javax.persistence.Enumerated
 import javax.persistence.Table
 
-/**
- * Role entity.
- */
 @Entity
 @Table(name = "role")
 class Role : BaseEntity() {

@@ -6,9 +6,6 @@ import javax.persistence.JoinTable
 import javax.persistence.ManyToMany
 import javax.persistence.Table
 
-/**
- * User entity.
- */
 @Entity
 @Table(name = "user")
 class User : BaseEntity() {

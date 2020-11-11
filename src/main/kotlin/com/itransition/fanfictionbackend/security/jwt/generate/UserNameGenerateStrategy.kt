@@ -4,9 +4,6 @@ import com.itransition.fanfictionbackend.dto.jwt.JwtTokenContainer
 import com.itransition.fanfictionbackend.security.JwtHelper
 import org.springframework.stereotype.Service
 
-/**
- * Генерация по имени пользователя.
- */
 @Service
 class UserNameGenerateStrategy(
     private val jwtHelper: JwtHelper

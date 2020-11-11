@@ -5,9 +5,6 @@ import org.springframework.util.StringUtils.hasText
 import java.util.Optional.ofNullable
 import javax.servlet.http.HttpServletRequest
 
-/**
- * Проверка Access token.
- */
 @Service
 internal class JwtValidAccessTokenService : JwtValidService {
 

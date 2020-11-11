@@ -8,9 +8,6 @@ import java.io.IOException
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-/**
- * Jwt authentication entry point implementation.
- */
 @Component
 class AuthEntryPointJwt : AuthenticationEntryPoint {
 

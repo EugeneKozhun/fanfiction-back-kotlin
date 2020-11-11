@@ -19,9 +19,6 @@ import javax.servlet.ServletException
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-/**
- * Token Authentication filter from http header.
- */
 @Service
 @Profile("!stub")
 class AuthTokenFilter(
