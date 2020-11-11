@@ -24,10 +24,16 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.liquibase:liquibase-core")
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
+    implementation("org.apache.logging.log4j:log4j-core:2.14.0")
+
     runtimeOnly("mysql:mysql-connector-java")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+
     testImplementation("org.springframework.security:spring-security-test")
 }
 
