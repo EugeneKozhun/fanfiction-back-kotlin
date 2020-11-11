@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: ${profile:dev}
+  jpa:
+    show-sql: ${show-sql:true}
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3306}/${DATABASE_NAME:fanfiction_db}
+    username: ${DATABASE_USER:root}
+    password: ${DATABASE_PASSWORD:root}
+  liquibase:
+    enabled: false
+    change-log: classpath:db/changelog/changelog-master.yml
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 100MB
+      max-request-size: 500MB
+
+app:
+  jwtSecret: ${secret:secret}
+  jwtAccessTokenExpirationMs: 600000 # 10 minutes
+  jwtRefreshTokenExpirationMs: 7200000 # 2 hours
