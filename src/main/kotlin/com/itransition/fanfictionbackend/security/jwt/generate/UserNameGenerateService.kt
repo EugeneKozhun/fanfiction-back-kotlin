@@ -5,9 +5,9 @@ import com.itransition.fanfictionbackend.security.JwtHelper
 import org.springframework.stereotype.Service
 
 @Service
-class UserNameGenerateStrategy(
+class UserNameGenerateService(
     private val jwtHelper: JwtHelper
-) : JwtGenerateStrategy<String> {
+) : JwtGenerateService<String> {
 
     override fun generate(param: String): JwtTokenContainer {
         return JwtTokenContainer(

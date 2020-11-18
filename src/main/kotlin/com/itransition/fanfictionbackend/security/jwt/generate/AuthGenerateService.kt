@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service
 import java.util.Optional
 
 @Service
-class AuthGenerateStrategy(
+class AuthGenerateService(
     private val jwtHelper: JwtHelper
-) : JwtGenerateStrategy<Authentication> {
+) : JwtGenerateService<Authentication> {
 
     private fun getUsername(authentication: Authentication): String {
         return Optional.of(authentication)
