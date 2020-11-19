@@ -7,7 +7,7 @@ spring:
   jpa:
     show-sql: ${show-sql:true}
     hibernate:
-      ddl-auto: none
+      ddl-auto: ${ddl-auto:create}
   datasource:
     url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3306}/${DATABASE_NAME:fanfiction_db}
     username: ${DATABASE_USER:root}

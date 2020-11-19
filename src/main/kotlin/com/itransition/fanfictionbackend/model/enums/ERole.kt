@@ -1,5 +1,8 @@
 package com.itransition.fanfictionbackend.model.enums
 
 enum class ERole {
-    ADMIN
+    ADMIN,
+    MODERATOR,
+    WRITER,
+    READER
 }

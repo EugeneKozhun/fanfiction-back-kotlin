@@ -30,8 +30,8 @@ class JwtHelper {
         return generateDefaultToken(userName, jwtRefreshTokenExpirationMs)
     }
 
-    fun getUserNameFromToken(authToken: String): String? {
-        return getClaimsJws(authToken)?.body?.subject
+    fun getUserNameFromToken(authToken: String): String {
+        return getClaimsJws(authToken)?.body?.subject!!
     }
 
     fun isValidToken(authToken: String): Boolean {

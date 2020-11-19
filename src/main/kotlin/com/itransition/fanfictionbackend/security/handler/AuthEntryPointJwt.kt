@@ -8,9 +8,6 @@ import java.io.IOException
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-/**
- * Jwt authentication entry point implementation.
- */
 @Component
 class AuthEntryPointJwt : AuthenticationEntryPoint {
 
@@ -20,7 +17,7 @@ class AuthEntryPointJwt : AuthenticationEntryPoint {
         response: HttpServletResponse,
         authException: AuthenticationException
     ) {
-        logger.error("Unauthorized error: {}", authException.message)
+        logger.warn("Unauthorized error: {}", authException.message)
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized")
     }
 

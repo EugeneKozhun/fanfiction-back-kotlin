@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service
 import java.util.Optional
 
 @Service
-class RefreshTokenStrategy(
+class RefreshTokenService(
     private val jwtHelper: JwtHelper
-) : JwtGenerateStrategy<String> {
+) : JwtGenerateService<String> {
 
     override fun generate(param: String): JwtTokenContainer {
         return Optional.of(param)
@@ -16,7 +16,7 @@ class RefreshTokenStrategy(
             .map { jwtHelper.getUserNameFromToken(it) }
             .map {
                 JwtTokenContainer(
-                    jwtHelper.generateRefreshToken(it!!),
+                    jwtHelper.generateRefreshToken(it),
                     jwtHelper.generateAccessToken(it)
                 )
             }
