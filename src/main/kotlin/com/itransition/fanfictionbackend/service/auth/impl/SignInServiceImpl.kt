@@ -2,7 +2,7 @@ package com.itransition.fanfictionbackend.service.auth.impl
 
 import com.itransition.fanfictionbackend.dto.login.LoginRequest
 import com.itransition.fanfictionbackend.dto.login.LoginResponse
-import com.itransition.fanfictionbackend.dto.user.AuthUserDto
+import com.itransition.fanfictionbackend.mapper.user.toAuthUserDto
 import com.itransition.fanfictionbackend.security.jwt.generate.JwtGenerateService
 import com.itransition.fanfictionbackend.security.model.UserDetailsImpl
 import com.itransition.fanfictionbackend.service.auth.SignInService
@@ -34,9 +34,6 @@ class SignInServiceImpl(
         SecurityContextHolder.getContext().authentication = authentication
         val userDetails = authentication.principal as UserDetailsImpl
 
-        return LoginResponse(
-            AuthUserDto(userDetails.id, userDetails.username, userDetails.authorities.map { it.authority }),
-            jwtGenerateService.generate(authentication)
-        )
+        return LoginResponse(userDetails.toAuthUserDto(), jwtGenerateService.generate(authentication))
     }
 }

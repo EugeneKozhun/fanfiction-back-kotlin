@@ -4,10 +4,9 @@ import javax.persistence.Entity
 import javax.persistence.JoinColumn
 import javax.persistence.JoinTable
 import javax.persistence.ManyToMany
-import javax.persistence.Table
+import javax.persistence.OneToMany
 
 @Entity
-@Table(name = "user")
 class User : BaseEntity() {
 
     var username: String? = null
@@ -20,4 +19,10 @@ class User : BaseEntity() {
         inverseJoinColumns = [JoinColumn(name = "role_id")]
     )
     var roles: Set<Role>? = null
+
+    @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
+    val chapters: List<FanficChapter>? = null
+
+    @OneToMany(mappedBy = "author", orphanRemoval = true)
+    var userFanfics: Set<Fanfic>? = null
 }
