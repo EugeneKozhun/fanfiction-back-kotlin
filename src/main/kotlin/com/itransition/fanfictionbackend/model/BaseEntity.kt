@@ -2,6 +2,7 @@ package com.itransition.fanfictionbackend.model
 
 import java.io.Serializable
 import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType.IDENTITY
 import javax.persistence.Id
 import javax.persistence.MappedSuperclass
 
@@ -9,6 +10,6 @@ import javax.persistence.MappedSuperclass
 abstract class BaseEntity : Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = IDENTITY)
     var id: Long? = null
 }

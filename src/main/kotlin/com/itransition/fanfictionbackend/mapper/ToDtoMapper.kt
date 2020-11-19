@@ -3,9 +3,9 @@ package com.itransition.fanfictionbackend.mapper
 import com.itransition.fanfictionbackend.dto.Dto
 import com.itransition.fanfictionbackend.model.BaseEntity
 
-interface Mapper<E : BaseEntity, D : Dto> : ToDtoMapper<E, D> {
+interface ToDtoMapper<E : BaseEntity, D : Dto> {
 
-    fun toEntity(entity: D): E
+    fun toDto(entity: E): D
 
-    fun toEntity(entity: List<D>): List<E>
+    fun toDto(entity: List<E>): List<D>
 }

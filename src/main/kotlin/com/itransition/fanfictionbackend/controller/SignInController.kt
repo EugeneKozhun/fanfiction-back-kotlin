@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping(path = ["/sign-in"])
-class AuthenticationController(
+class SignInController(
     private val signInService: SignInService
 ) {
 
