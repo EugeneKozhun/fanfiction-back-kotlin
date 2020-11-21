@@ -20,9 +20,6 @@ class User : BaseEntity() {
     )
     var roles: Set<Role>? = null
 
-    @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
-    val chapters: List<FanficChapter>? = null
-
     @OneToMany(mappedBy = "author", orphanRemoval = true)
     var userFanfics: Set<Fanfic>? = null
 }
