@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 
 @Service
 @Profile("stub")
-internal class AuthenticationServiceStub : SignInService {
+internal class SignInServiceStub : SignInService {
 
     override fun signIn(loginRequest: LoginRequest): LoginResponse {
         return LoginResponse(AuthUserDto(STUB_ID, STUB_USERNAME, STUB_ROLES), JwtTokenContainer(STUB_TOKEN, STUB_TOKEN))
