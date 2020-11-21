@@ -31,11 +31,13 @@ class FanficController(
 
     @GetMapping(path = ["/edit/{id}"])
     fun getEditFanficDto(@PathVariable id: Long): Any? {
+        // TODO: implement
         return null
     }
 
     @PutMapping(path = ["/update"])
     fun updateFanfic(@RequestBody fanficEditDto: Any): Any? {
+        // TODO: implement
         return null
     }
 
