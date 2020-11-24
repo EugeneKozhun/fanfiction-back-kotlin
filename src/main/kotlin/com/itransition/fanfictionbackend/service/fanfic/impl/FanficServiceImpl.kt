@@ -1,10 +1,13 @@
 package com.itransition.fanfictionbackend.service.fanfic.impl
 
 import com.itransition.fanfictionbackend.dto.common.PageWrapper
+import com.itransition.fanfictionbackend.dto.fanfic.FanficEditDto
 import com.itransition.fanfictionbackend.dto.fanfic.FanficFullDto
 import com.itransition.fanfictionbackend.dto.fanfic.FanficPreviewDto
-import com.itransition.fanfictionbackend.mapper.fanfic.FanficFullDtoMapper
-import com.itransition.fanfictionbackend.mapper.fanfic.FanficPreviewDtoMapper
+import com.itransition.fanfictionbackend.mapper.fanfic.toFanficEditDto
+import com.itransition.fanfictionbackend.mapper.fanfic.toFanficFullDto
+import com.itransition.fanfictionbackend.mapper.fanfic.toFanficPreviewDto
+import com.itransition.fanfictionbackend.mapper.fanfic.update
 import com.itransition.fanfictionbackend.repository.FanficRepository
 import com.itransition.fanfictionbackend.service.fanfic.FanficService
 import org.springframework.data.domain.Pageable
@@ -13,9 +16,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class FanficServiceImpl(
-    private val fanficRepository: FanficRepository,
-    private val fanficPreviewDtoMapper: FanficPreviewDtoMapper,
-    private val fanficFullDtoMapper: FanficFullDtoMapper
+    private val fanficRepository: FanficRepository
 ) : FanficService {
 
     @Transactional(readOnly = true)
@@ -23,15 +24,30 @@ class FanficServiceImpl(
         val fanficsPage = fanficRepository.findAll(pageable)
         return PageWrapper(
             fanficsPage.totalElements,
-            fanficPreviewDtoMapper.map(fanficsPage.content)
+            fanficsPage.content.map { it.toFanficPreviewDto() }
         )
     }
 
     @Transactional(readOnly = true)
     override fun getFanfic(id: Long): FanficFullDto {
         return fanficRepository.findById(id)
-            .map { fanficFullDtoMapper.map(it) }
+            .map { it.toFanficFullDto() }
             // TODO: other exception
             .orElseThrow()
+    }
+
+    @Transactional(readOnly = true)
+    override fun getEditFanfic(id: Long): FanficEditDto {
+        return fanficRepository.findById(id)
+            .map { it.toFanficEditDto() }
+            // TODO: other exception
+            .orElseThrow()
+    }
+
+    @Transactional
+    override fun updateFanfic(updatedFanfic: FanficEditDto): FanficFullDto {
+        val fanfic = fanficRepository.findById(updatedFanfic.id).orElseThrow()
+        fanfic.update(updatedFanfic)
+        return fanfic.toFanficFullDto()
     }
 }

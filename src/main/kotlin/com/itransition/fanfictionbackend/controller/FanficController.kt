@@ -1,6 +1,7 @@
 package com.itransition.fanfictionbackend.controller
 
 import com.itransition.fanfictionbackend.dto.common.PageWrapper
+import com.itransition.fanfictionbackend.dto.fanfic.FanficEditDto
 import com.itransition.fanfictionbackend.dto.fanfic.FanficFullDto
 import com.itransition.fanfictionbackend.dto.fanfic.FanficPreviewDto
 import com.itransition.fanfictionbackend.service.fanfic.FanficService
@@ -30,15 +31,13 @@ class FanficController(
     }
 
     @GetMapping(path = ["/edit/{id}"])
-    fun getEditFanficDto(@PathVariable id: Long): Any? {
-        // TODO: implement
-        return null
+    fun getEditFanficDto(@PathVariable id: Long): FanficEditDto {
+        return fanficService.getEditFanfic(id)
     }
 
     @PutMapping(path = ["/update"])
-    fun updateFanfic(@RequestBody fanficEditDto: Any): Any? {
-        // TODO: implement
-        return null
+    fun updateFanfic(@RequestBody updatedFanfic: FanficEditDto): FanficFullDto {
+        return fanficService.updateFanfic(updatedFanfic)
     }
 
     @DeleteMapping(path = ["/delete/{id}"])

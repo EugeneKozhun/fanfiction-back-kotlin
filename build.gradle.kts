@@ -6,7 +6,6 @@ plugins {
     kotlin("jvm") version "1.4.20"
     kotlin("plugin.spring") version "1.4.20"
     kotlin("plugin.jpa") version "1.4.20"
-    kotlin("kapt") version "1.4.20"
 }
 
 group = "com.itransition"
@@ -28,8 +27,6 @@ dependencies {
     implementation("io.springfox:springfox-boot-starter:3.0.0")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
     implementation("org.apache.logging.log4j:log4j-core:2.14.0")
-    implementation("org.mapstruct:mapstruct:1.4.1.Final")
-    kapt("org.mapstruct:mapstruct-processor:1.4.1.Final")
 
     runtimeOnly("mysql:mysql-connector-java")
 
