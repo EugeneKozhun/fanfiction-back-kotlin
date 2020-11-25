@@ -1,10 +1,10 @@
-package com.itransition.fanfictionbackend.service.auth.impl
+package com.itransition.fanfictionbackend.service.signin.impl
 
 import com.itransition.fanfictionbackend.dto.jwt.JwtTokenContainer
-import com.itransition.fanfictionbackend.dto.login.LoginRequest
-import com.itransition.fanfictionbackend.dto.login.LoginResponse
+import com.itransition.fanfictionbackend.dto.signin.SignInRequest
+import com.itransition.fanfictionbackend.dto.signin.SignInResponse
 import com.itransition.fanfictionbackend.dto.user.AuthUserDto
-import com.itransition.fanfictionbackend.service.auth.SignInService
+import com.itransition.fanfictionbackend.service.signin.SignInService
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service
 @Profile("stub")
 internal class SignInServiceStub : SignInService {
 
-    override fun signIn(loginRequest: LoginRequest): LoginResponse {
-        return LoginResponse(
+    override fun signIn(signInRequest: SignInRequest): SignInResponse {
+        return SignInResponse(
             AuthUserDto(STUB_ID, STUB_USERNAME, STUB_ROLES),
             JwtTokenContainer(STUB_TOKEN, STUB_TOKEN)
         )

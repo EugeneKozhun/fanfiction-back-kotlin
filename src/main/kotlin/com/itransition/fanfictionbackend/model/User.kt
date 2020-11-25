@@ -13,6 +13,7 @@ class User : BaseEntity() {
 
     var username: String? = null
     var password: String? = null
+    var email: String? = null
     var confirmed: Boolean = false
     var banned: Boolean = false
 

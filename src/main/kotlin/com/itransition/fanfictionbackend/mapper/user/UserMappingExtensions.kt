@@ -1,5 +1,6 @@
 package com.itransition.fanfictionbackend.mapper.user
 
+import com.itransition.fanfictionbackend.dto.signup.SignUpRequest
 import com.itransition.fanfictionbackend.dto.user.AuthUserDto
 import com.itransition.fanfictionbackend.dto.user.UserPreviewDto
 import com.itransition.fanfictionbackend.model.User
@@ -15,3 +16,8 @@ fun User.toUserPreviewDto() = UserPreviewDto(
     id = id!!,
     username = username!!
 )
+
+fun SignUpRequest.toNewUser() = User().apply {
+    username = this@toNewUser.username
+    email = this@toNewUser.email
+}

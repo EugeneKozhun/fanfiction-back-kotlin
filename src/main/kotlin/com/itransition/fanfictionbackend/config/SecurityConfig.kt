@@ -56,7 +56,7 @@ class JwtSecurityConfig(
     override fun configure(httpSecurity: HttpSecurity) {
         httpSecurity
             .csrf {
-                it.ignoringAntMatchers(CSRF_IGNORE_URL)
+                it.ignoringAntMatchers(*CSRF_IGNORE_URL.toTypedArray())
                     .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
             }
             .authorizeRequests {

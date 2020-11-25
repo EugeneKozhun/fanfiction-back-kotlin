@@ -1,4 +1,4 @@
-package com.itransition.fanfictionbackend.service.auth.impl.checks
+package com.itransition.fanfictionbackend.service.signin.impl.checks
 
 import com.itransition.fanfictionbackend.model.User
 

@@ -4,5 +4,10 @@ enum class ERole {
     ADMIN,
     MODERATOR,
     WRITER,
-    READER
+    READER;
+
+    companion object {
+
+        fun getDefaultRoles() = listOf(READER)
+    }
 }
