@@ -51,9 +51,4 @@ class AuthTokenFilter(
     }
 
     override fun shouldNotFilter(request: HttpServletRequest) = WHITE_LIST.any { it == request.requestURI }
-
-    companion object {
-
-        val logger = LogManager.getLogger(AuthTokenFilter::class.java)!!
-    }
 }
