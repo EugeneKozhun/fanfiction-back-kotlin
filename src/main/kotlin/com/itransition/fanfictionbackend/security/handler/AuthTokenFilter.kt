@@ -1,6 +1,6 @@
 package com.itransition.fanfictionbackend.security.handler
 
-import com.itransition.fanfictionbackend.constants.UrlConstants.WHITE_LIST
+import com.itransition.fanfictionbackend.constants.WHITE_LIST
 import com.itransition.fanfictionbackend.security.JwtHelper
 import com.itransition.fanfictionbackend.security.jwt.JwtValidService
 import org.apache.logging.log4j.LogManager
