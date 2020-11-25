@@ -27,21 +27,21 @@ class FanficController(
 
     @GetMapping(path = ["/{id}"])
     fun getFanfic(@PathVariable id: Long): FanficFullDto {
-        return fanficService.getFanfic(id)
+        return fanficService.get(id)
     }
 
     @GetMapping(path = ["/edit/{id}"])
     fun getEditFanficDto(@PathVariable id: Long): FanficEditDto {
-        return fanficService.getEditFanfic(id)
+        return fanficService.getEdit(id)
     }
 
     @PutMapping(path = ["/update"])
     fun updateFanfic(@RequestBody updatedFanfic: FanficEditDto): FanficFullDto {
-        return fanficService.updateFanfic(updatedFanfic)
+        return fanficService.update(updatedFanfic)
     }
 
     @DeleteMapping(path = ["/delete/{id}"])
     fun deleteFanfic(@PathVariable id: Long) {
-        // TODO: implement
+        fanficService.delete(id)
     }
 }

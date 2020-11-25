@@ -10,9 +10,11 @@ interface FanficService {
 
     fun getPreviewPage(pageable: Pageable): PageWrapper<FanficPreviewDto>
 
-    fun getFanfic(id: Long): FanficFullDto
+    fun get(id: Long): FanficFullDto
 
-    fun getEditFanfic(id: Long): FanficEditDto
+    fun getEdit(id: Long): FanficEditDto
 
-    fun updateFanfic(updatedFanfic: FanficEditDto): FanficFullDto
+    fun update(updatedFanfic: FanficEditDto): FanficFullDto
+
+    fun delete(fanficId: Long)
 }

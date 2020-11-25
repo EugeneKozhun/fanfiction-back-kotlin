@@ -29,7 +29,7 @@ class FanficServiceImpl(
     }
 
     @Transactional(readOnly = true)
-    override fun getFanfic(id: Long): FanficFullDto {
+    override fun get(id: Long): FanficFullDto {
         return fanficRepository.findById(id)
             .map { it.toFanficFullDto() }
             // TODO: other exception
@@ -37,7 +37,7 @@ class FanficServiceImpl(
     }
 
     @Transactional(readOnly = true)
-    override fun getEditFanfic(id: Long): FanficEditDto {
+    override fun getEdit(id: Long): FanficEditDto {
         return fanficRepository.findById(id)
             .map { it.toFanficEditDto() }
             // TODO: other exception
@@ -45,9 +45,14 @@ class FanficServiceImpl(
     }
 
     @Transactional
-    override fun updateFanfic(updatedFanfic: FanficEditDto): FanficFullDto {
+    override fun update(updatedFanfic: FanficEditDto): FanficFullDto {
         val fanfic = fanficRepository.findById(updatedFanfic.id!!).orElseThrow()
         fanfic.update(updatedFanfic)
         return fanfic.toFanficFullDto()
+    }
+
+    @Transactional
+    override fun delete(fanficId: Long) {
+        fanficRepository.deleteById(fanficId)
     }
 }
