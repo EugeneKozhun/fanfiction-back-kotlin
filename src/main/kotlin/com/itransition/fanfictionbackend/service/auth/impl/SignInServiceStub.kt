@@ -13,7 +13,10 @@ import org.springframework.stereotype.Service
 internal class SignInServiceStub : SignInService {
 
     override fun signIn(loginRequest: LoginRequest): LoginResponse {
-        return LoginResponse(AuthUserDto(STUB_ID, STUB_USERNAME, STUB_ROLES), JwtTokenContainer(STUB_TOKEN, STUB_TOKEN))
+        return LoginResponse(
+            AuthUserDto(STUB_ID, STUB_USERNAME, STUB_ROLES),
+            JwtTokenContainer(STUB_TOKEN, STUB_TOKEN)
+        )
     }
 
     companion object {
