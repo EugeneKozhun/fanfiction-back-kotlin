@@ -46,7 +46,7 @@ class FanficServiceImpl(
 
     @Transactional
     override fun updateFanfic(updatedFanfic: FanficEditDto): FanficFullDto {
-        val fanfic = fanficRepository.findById(updatedFanfic.id).orElseThrow()
+        val fanfic = fanficRepository.findById(updatedFanfic.id!!).orElseThrow()
         fanfic.update(updatedFanfic)
         return fanfic.toFanficFullDto()
     }

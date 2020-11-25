@@ -5,9 +5,9 @@ import com.itransition.fanfictionbackend.dto.fanfic.chapter.FanficChapterFullDto
 import com.itransition.fanfictionbackend.dto.user.UserPreviewDto
 
 data class FanficFullDto(
-    val id: Long,
-    val title: String,
-    val description: String,
-    val author: UserPreviewDto,
-    val chapters: List<FanficChapterFullDto>
+    var id: Long,
+    var title: String,
+    var description: String,
+    var author: UserPreviewDto,
+    var chapters: List<FanficChapterFullDto> = emptyList()
 ) : Dto

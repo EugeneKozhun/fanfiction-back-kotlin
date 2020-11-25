@@ -18,5 +18,5 @@ class Fanfic : BaseEntity() {
     var author: User? = null
 
     @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
-    var chapters: List<FanficChapter> = emptyList()
+    var chapters: MutableList<FanficChapter> = mutableListOf()
 }

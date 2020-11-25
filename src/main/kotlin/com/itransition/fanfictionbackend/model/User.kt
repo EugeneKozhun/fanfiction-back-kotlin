@@ -20,8 +20,8 @@ class User : BaseEntity() {
         joinColumns = [JoinColumn(name = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "role_id")]
     )
-    var roles: Set<Role>? = emptySet()
+    var roles: MutableSet<Role>? = mutableSetOf()
 
     @OneToMany(mappedBy = "author", orphanRemoval = true)
-    var userFanfics: Set<Fanfic>? = emptySet()
+    var userFanfics: MutableSet<Fanfic>? = mutableSetOf()
 }
