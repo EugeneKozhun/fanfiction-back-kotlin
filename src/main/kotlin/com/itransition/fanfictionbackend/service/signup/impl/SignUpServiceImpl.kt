@@ -5,6 +5,7 @@ import com.itransition.fanfictionbackend.mapper.user.toNewUser
 import com.itransition.fanfictionbackend.repository.RoleRepository
 import com.itransition.fanfictionbackend.repository.UserRepository
 import com.itransition.fanfictionbackend.service.signup.SignUpService
+import com.itransition.fanfictionbackend.service.signup.impl.checks.SignUpRequestCheck
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -13,14 +14,17 @@ import org.springframework.transaction.annotation.Transactional
 class SignUpServiceImpl(
     private val userRepository: UserRepository,
     private val roleRepository: RoleRepository,
-    private val passwordEncoder: PasswordEncoder
+    private val passwordEncoder: PasswordEncoder,
+    private val signUpRequestChecks: List<SignUpRequestCheck>
 ) : SignUpService {
 
     @Transactional
     override fun signUp(signUpRequest: SignUpRequest) {
-        // TODO: implement:
-        //       1) add checks (username, email, roles)
-        //       2) email confirmation
+        signUpRequestChecks.forEach { it.check(signUpRequest) }
+
+        // TODO: implement confirmation logic.
+        //      send confirm code on email.
+
         val userRoles = roleRepository.findByNameIn(signUpRequest.roles)
         val encodedPassword = passwordEncoder.encode(signUpRequest.password)
         userRepository.save(

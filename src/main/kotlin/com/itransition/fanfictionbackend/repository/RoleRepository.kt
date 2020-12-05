@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository
 interface RoleRepository : BaseRepository<Role> {
 
     fun findByNameIn(role: List<ERole>): MutableSet<Role>
+
+    fun findBySignUpRoleIsTrue(): Set<Role>
 }

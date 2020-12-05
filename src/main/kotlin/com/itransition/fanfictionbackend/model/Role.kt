@@ -12,4 +12,6 @@ class Role : BaseEntity() {
 
     @Enumerated(STRING)
     var name: ERole? = null
+
+    var signUpRole: Boolean = false
 }
