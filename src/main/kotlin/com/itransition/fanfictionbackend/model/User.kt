@@ -17,14 +17,17 @@ class User : BaseEntity() {
     var confirmed: Boolean = false
     var banned: Boolean = false
 
+    @OneToMany(mappedBy = "author", orphanRemoval = true)
+    var userFanfics: MutableSet<Fanfic> = mutableSetOf()
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    var ratings: List<Rating> = listOf()
+
     @ManyToMany
     @JoinTable(
         name = "user_roles",
         joinColumns = [JoinColumn(name = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "role_id")]
     )
-    var roles: MutableSet<Role>? = mutableSetOf()
-
-    @OneToMany(mappedBy = "author", orphanRemoval = true)
-    var userFanfics: MutableSet<Fanfic>? = mutableSetOf()
+    var roles: MutableSet<Role> = mutableSetOf()
 }

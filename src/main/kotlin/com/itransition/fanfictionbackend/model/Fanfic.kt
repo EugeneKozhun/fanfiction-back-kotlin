@@ -19,4 +19,7 @@ class Fanfic : BaseEntity() {
 
     @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
     var chapters: MutableList<FanficChapter> = mutableListOf()
+
+    @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
+    var ratings: MutableList<Rating> = mutableListOf()
 }
