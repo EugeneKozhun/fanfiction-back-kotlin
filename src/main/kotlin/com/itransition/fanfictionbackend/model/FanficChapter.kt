@@ -8,7 +8,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "fanfic_chapter")
-class FanficChapter : BaseEntity() {
+class FanficChapter : WithLongId() {
 
     var title: String? = null
 

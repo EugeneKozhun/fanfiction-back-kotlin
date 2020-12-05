@@ -9,7 +9,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "user")
-class User : BaseEntity() {
+class User : WithLongId() {
 
     var username: String? = null
     var password: String? = null
@@ -22,6 +22,9 @@ class User : BaseEntity() {
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     var ratings: List<Rating> = listOf()
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    var reactions: List<Reaction> = listOf()
 
     @ManyToMany
     @JoinTable(

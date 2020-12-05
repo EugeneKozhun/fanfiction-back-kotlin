@@ -8,7 +8,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "fanfic")
-class Fanfic : BaseEntity() {
+class Fanfic : WithLongId() {
 
     var title: String? = null
     var description: String? = null
@@ -22,4 +22,7 @@ class Fanfic : BaseEntity() {
 
     @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
     var ratings: MutableList<Rating> = mutableListOf()
+
+    @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
+    var reactions: MutableList<Reaction> = mutableListOf()
 }

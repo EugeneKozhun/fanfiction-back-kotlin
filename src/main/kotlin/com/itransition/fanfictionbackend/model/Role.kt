@@ -8,7 +8,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "role")
-class Role : BaseEntity() {
+class Role : WithLongId() {
 
     @Enumerated(STRING)
     var name: ERole? = null
