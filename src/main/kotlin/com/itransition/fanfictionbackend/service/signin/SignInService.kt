@@ -5,5 +5,5 @@ import com.itransition.fanfictionbackend.dto.signin.SignInResponse
 
 interface SignInService {
 
-    fun signIn(signInRequest: SignInRequest) : SignInResponse
+    fun signIn(signInRequest: SignInRequest): SignInResponse
 }

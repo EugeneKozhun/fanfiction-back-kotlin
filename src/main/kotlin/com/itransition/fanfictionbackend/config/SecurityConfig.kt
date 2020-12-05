@@ -66,7 +66,7 @@ class JwtSecurityConfig(
             .exceptionHandling { it.authenticationEntryPoint(authEntryPoint) }
             .addFilterBefore(authenticationJwtTokenFilter, UsernamePasswordAuthenticationFilter::class.java)
             .sessionManagement()
-            .sessionCreationPolicy(STATELESS);
+            .sessionCreationPolicy(STATELESS)
     }
 }
 
