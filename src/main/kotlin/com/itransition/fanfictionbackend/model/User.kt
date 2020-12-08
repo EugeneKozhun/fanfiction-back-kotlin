@@ -26,6 +26,9 @@ class User : WithLongId() {
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     var reactions: List<Reaction> = listOf()
 
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    var comments: List<Comment> = listOf()
+
     @ManyToMany
     @JoinTable(
         name = "user_roles",

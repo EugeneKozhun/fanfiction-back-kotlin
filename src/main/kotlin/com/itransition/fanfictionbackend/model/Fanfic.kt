@@ -21,8 +21,11 @@ class Fanfic : WithLongId() {
     var chapters: MutableList<FanficChapter> = mutableListOf()
 
     @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
-    var ratings: MutableList<Rating> = mutableListOf()
+    var ratings: List<Rating> = listOf()
 
     @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
-    var reactions: MutableList<Reaction> = mutableListOf()
+    var reactions: List<Reaction> = listOf()
+
+    @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
+    var comments: List<Comment> = listOf()
 }
