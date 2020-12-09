@@ -18,7 +18,7 @@ class User : WithLongId() {
     var banned: Boolean = false
 
     @OneToMany(mappedBy = "author", orphanRemoval = true)
-    var userFanfics: MutableSet<Fanfic> = mutableSetOf()
+    var userFanfics: Set<Fanfic> = emptySet()
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     var ratings: List<Rating> = emptyList()
