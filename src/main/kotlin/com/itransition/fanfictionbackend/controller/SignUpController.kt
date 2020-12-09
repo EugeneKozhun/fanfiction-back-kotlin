@@ -1,5 +1,7 @@
 package com.itransition.fanfictionbackend.controller
 
+import com.itransition.fanfictionbackend.dto.signup.SignUpRequest
+import com.itransition.fanfictionbackend.service.signup.SignUpService
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -10,12 +12,14 @@ import java.util.UUID
 
 @RestController
 @RequestMapping(path = ["/sign-up"])
-class SignUpController {
+class SignUpController(
+    private val signUpService: SignUpService
+) {
 
     @PostMapping
     @ResponseStatus(value = CREATED)
-    fun registerUser(@RequestBody signUpRequestDto: Any) {
-        // TODO: implement
+    fun registerUser(@RequestBody signUpRequestDto: SignUpRequest) {
+        signUpService.signUp(signUpRequestDto)
     }
 
     @PostMapping(path = ["/confirm"])

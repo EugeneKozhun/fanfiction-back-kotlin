@@ -1,14 +1,12 @@
 package com.itransition.fanfictionbackend.constants
 
-object UrlConstants {
-
-    const val ANY_URL = "/**"
-    const val CSRF_IGNORE_URL = "/sign-in"
-
-    val AUTH_POST_RESPONSE_WHITELIST = listOf(
-        CSRF_IGNORE_URL,
-        "/auth/update-token"
-    )
-
-    val WHITE_LIST = AUTH_POST_RESPONSE_WHITELIST
-}
+const val ANY_URL = "/**"
+val CSRF_IGNORE_URL = listOf(
+    "/sign-in",
+    "/sign-up"
+)
+val AUTH_POST_RESPONSE_WHITELIST = listOf(
+    *CSRF_IGNORE_URL.toTypedArray(),
+    "/auth/update-token"
+)
+val WHITE_LIST = AUTH_POST_RESPONSE_WHITELIST

@@ -1,11 +1,13 @@
-package com.itransition.fanfictionbackend.service.auth.impl
+package com.itransition.fanfictionbackend.service.signin.impl
 
-import com.itransition.fanfictionbackend.dto.login.LoginRequest
-import com.itransition.fanfictionbackend.dto.login.LoginResponse
+import com.itransition.fanfictionbackend.dto.signin.SignInRequest
+import com.itransition.fanfictionbackend.dto.signin.SignInResponse
 import com.itransition.fanfictionbackend.mapper.user.toAuthUserDto
+import com.itransition.fanfictionbackend.repository.UserRepository
 import com.itransition.fanfictionbackend.security.jwt.generate.JwtGenerateService
 import com.itransition.fanfictionbackend.security.model.UserDetailsImpl
-import com.itransition.fanfictionbackend.service.auth.SignInService
+import com.itransition.fanfictionbackend.service.signin.SignInService
+import com.itransition.fanfictionbackend.service.signin.impl.checks.UserValidCheck
 import org.springframework.context.annotation.Profile
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -18,22 +20,23 @@ import org.springframework.transaction.annotation.Transactional
 @Profile("dev", "prod")
 class SignInServiceImpl(
     private val authenticationManager: AuthenticationManager,
-    private val jwtGenerateService: JwtGenerateService<Authentication>
+    private val jwtGenerateService: JwtGenerateService<Authentication>,
+    private val userValidChecks: List<UserValidCheck>,
+    private val userRepository: UserRepository
 ) : SignInService {
 
     @Transactional
-    override fun signIn(loginRequest: LoginRequest): LoginResponse {
-
-        // TODO: add checks chain.
-        //      1) Confirmed
-        //      2) Banned
+    override fun signIn(signInRequest: SignInRequest): SignInResponse {
+        val user = userRepository.findByUsername(signInRequest.username)
+            .orElseThrow()
+        userValidChecks.forEach { it.check(user) }
 
         val authentication = authenticationManager.authenticate(
-            UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password)
+            UsernamePasswordAuthenticationToken(signInRequest.username, signInRequest.password)
         )
         SecurityContextHolder.getContext().authentication = authentication
         val userDetails = authentication.principal as UserDetailsImpl
 
-        return LoginResponse(userDetails.toAuthUserDto(), jwtGenerateService.generate(authentication))
+        return SignInResponse(userDetails.toAuthUserDto(), jwtGenerateService.generate(authentication))
     }
 }

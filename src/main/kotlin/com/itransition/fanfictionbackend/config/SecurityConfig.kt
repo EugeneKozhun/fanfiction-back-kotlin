@@ -1,8 +1,8 @@
 package com.itransition.fanfictionbackend.config
 
-import com.itransition.fanfictionbackend.constants.UrlConstants.ANY_URL
-import com.itransition.fanfictionbackend.constants.UrlConstants.AUTH_POST_RESPONSE_WHITELIST
-import com.itransition.fanfictionbackend.constants.UrlConstants.CSRF_IGNORE_URL
+import com.itransition.fanfictionbackend.constants.ANY_URL
+import com.itransition.fanfictionbackend.constants.AUTH_POST_RESPONSE_WHITELIST
+import com.itransition.fanfictionbackend.constants.CSRF_IGNORE_URL
 import com.itransition.fanfictionbackend.security.handler.AuthEntryPointJwt
 import com.itransition.fanfictionbackend.security.handler.AuthTokenFilter
 import org.springframework.beans.factory.annotation.Qualifier
@@ -56,7 +56,7 @@ class JwtSecurityConfig(
     override fun configure(httpSecurity: HttpSecurity) {
         httpSecurity
             .csrf {
-                it.ignoringAntMatchers(CSRF_IGNORE_URL)
+                it.ignoringAntMatchers(*CSRF_IGNORE_URL.toTypedArray())
                     .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
             }
             .authorizeRequests {
@@ -66,7 +66,7 @@ class JwtSecurityConfig(
             .exceptionHandling { it.authenticationEntryPoint(authEntryPoint) }
             .addFilterBefore(authenticationJwtTokenFilter, UsernamePasswordAuthenticationFilter::class.java)
             .sessionManagement()
-            .sessionCreationPolicy(STATELESS);
+            .sessionCreationPolicy(STATELESS)
     }
 }
 

@@ -4,5 +4,5 @@ enum class ERole {
     ADMIN,
     MODERATOR,
     WRITER,
-    READER
+    READER;
 }

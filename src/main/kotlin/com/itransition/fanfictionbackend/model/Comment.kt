@@ -7,15 +7,17 @@ import javax.persistence.ManyToOne
 import javax.persistence.Table
 
 @Entity
-@Table(name = "fanfic_chapter")
-class FanficChapter : WithLongId() {
-
-    var title: String? = null
+@Table(name = "comment")
+class Comment : WithLongId() {
 
     @Lob
-    var content: String? = null
+    var message: String? = null
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id")
+    val user: User? = null
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "fanfic_id")
-    var fanfic: Fanfic? = null
+    val fanfic: Fanfic? = null
 }
