@@ -21,13 +21,13 @@ class User : WithLongId() {
     var userFanfics: MutableSet<Fanfic> = mutableSetOf()
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
-    var ratings: List<Rating> = listOf()
+    var ratings: List<Rating> = emptyList()
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
-    var reactions: List<Reaction> = listOf()
+    var reactions: List<Reaction> = emptyList()
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
-    var comments: List<Comment> = listOf()
+    var comments: List<Comment> = emptyList()
 
     @ManyToMany
     @JoinTable(

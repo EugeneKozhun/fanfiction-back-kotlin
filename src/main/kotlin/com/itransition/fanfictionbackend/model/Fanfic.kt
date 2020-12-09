@@ -2,6 +2,8 @@ package com.itransition.fanfictionbackend.model
 
 import javax.persistence.Entity
 import javax.persistence.JoinColumn
+import javax.persistence.JoinTable
+import javax.persistence.ManyToMany
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
 import javax.persistence.Table
@@ -21,11 +23,19 @@ class Fanfic : WithLongId() {
     var chapters: MutableList<FanficChapter> = mutableListOf()
 
     @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
-    var ratings: List<Rating> = listOf()
+    var ratings: List<Rating> = emptyList()
 
     @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
-    var reactions: List<Reaction> = listOf()
+    var reactions: List<Reaction> = emptyList()
 
     @OneToMany(mappedBy = "fanfic", orphanRemoval = true)
-    var comments: List<Comment> = listOf()
+    var comments: List<Comment> = emptyList()
+
+    @ManyToMany
+    @JoinTable(
+        name = "fanfic_tag",
+        joinColumns = [JoinColumn(name = "fanfic_id")],
+        inverseJoinColumns = [JoinColumn(name = "tag_id")]
+    )
+    var tags: List<Tag> = emptyList()
 }

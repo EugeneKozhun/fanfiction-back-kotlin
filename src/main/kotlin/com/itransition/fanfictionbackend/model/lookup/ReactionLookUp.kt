@@ -14,5 +14,5 @@ class ReactionLookUp {
     var name: String? = null
 
     @OneToMany(mappedBy = "value", orphanRemoval = true)
-    var reaction: List<Reaction> = listOf()
+    var reaction: List<Reaction> = emptyList()
 }
