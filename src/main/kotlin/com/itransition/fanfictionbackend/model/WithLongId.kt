@@ -7,7 +7,7 @@ import javax.persistence.Id
 import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
-abstract class BaseEntity : Serializable {
+abstract class WithLongId : Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

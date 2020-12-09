@@ -3,7 +3,6 @@ services:
   db:
     image: mysql:8.0.22
     container_name: mysql_db
-    restart: always
     ports:
       - 3306:3306
     environment:
