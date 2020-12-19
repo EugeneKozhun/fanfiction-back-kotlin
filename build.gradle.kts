@@ -34,6 +34,7 @@ dependencies {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
 
+    testImplementation("com.h2database:h2")
     testImplementation("org.springframework.security:spring-security-test")
 }
 
