@@ -3,7 +3,6 @@ package com.itransition.fanfictionbackend.security.handler
 import com.itransition.fanfictionbackend.constants.WHITE_LIST
 import com.itransition.fanfictionbackend.security.JwtHelper
 import com.itransition.fanfictionbackend.security.jwt.JwtValidService
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Profile
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder.getContext
@@ -23,8 +22,7 @@ import javax.servlet.http.HttpServletResponse
 class AuthTokenFilter(
     private val jwtHelper: JwtHelper,
     private val validAccessToken: JwtValidService,
-    @Qualifier("userDetailsServiceImpl")
-    private val userDetailsService: UserDetailsService
+    private val userDetailsServiceImpl: UserDetailsService
 ) : OncePerRequestFilter() {
 
     @Throws(ServletException::class, IOException::class)
@@ -37,7 +35,7 @@ class AuthTokenFilter(
             ofNullable(validAccessToken.parseJwt(request))
                 .filter { jwtHelper.isValidToken(it) }
                 .map { jwtHelper.getUserNameFromToken(it) }
-                .map { userDetailsService.loadUserByUsername(it) }
+                .map { userDetailsServiceImpl.loadUserByUsername(it) }
                 .map { UsernamePasswordAuthenticationToken(it, null, it.authorities) }
                 .ifPresent {
                     it.details = WebAuthenticationDetailsSource().buildDetails(request)

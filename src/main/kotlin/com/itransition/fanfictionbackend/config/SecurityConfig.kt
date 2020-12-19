@@ -5,7 +5,6 @@ import com.itransition.fanfictionbackend.constants.AUTH_POST_RESPONSE_WHITELIST
 import com.itransition.fanfictionbackend.constants.CSRF_IGNORE_URL
 import com.itransition.fanfictionbackend.security.handler.AuthEntryPointJwt
 import com.itransition.fanfictionbackend.security.handler.AuthTokenFilter
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
@@ -31,8 +30,7 @@ sealed class SecurityConfig : WebSecurityConfigurerAdapter()
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 class JwtSecurityConfig(
     private val passwordEncoder: PasswordEncoder,
-    @Qualifier("userDetailsServiceImpl")
-    private val userDetailsService: UserDetailsService,
+    private val userDetailsServiceImpl: UserDetailsService,
     private val authEntryPoint: AuthEntryPointJwt,
     private val authenticationJwtTokenFilter: AuthTokenFilter
 ) : SecurityConfig() {
@@ -49,7 +47,7 @@ class JwtSecurityConfig(
 
     @Throws(Exception::class)
     override fun configure(auth: AuthenticationManagerBuilder) {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder)
+        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(passwordEncoder)
     }
 
     @Throws(Exception::class)
