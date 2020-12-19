@@ -6,8 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest
 @SpringBootTest
 class FanfictionBackEndApplicationTests {
 
-	@Test
-	fun contextLoads() {
-	}
-
+    @Test
+    fun markedTests() {
+        println("Test worked")
+    }
 }

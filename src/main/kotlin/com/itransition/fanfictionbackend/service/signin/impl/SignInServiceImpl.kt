@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-@Profile("dev", "prod")
+@Profile("test", "dev", "prod")
 class SignInServiceImpl(
     private val authenticationManager: AuthenticationManager,
     private val jwtGenerateService: JwtGenerateService<Authentication>,
