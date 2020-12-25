@@ -1,16 +1,18 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.3.5.RELEASE"
+    val kotlinVersion = "1.4.21"
+
+    id("org.springframework.boot") version "2.4.1"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
-    kotlin("jvm") version "1.4.20"
-    kotlin("plugin.spring") version "1.4.20"
-    kotlin("plugin.jpa") version "1.4.20"
+    kotlin("jvm") version kotlinVersion
+    kotlin("plugin.spring") version kotlinVersion
+    kotlin("plugin.jpa") version kotlinVersion
 }
 
 group = "com.itransition"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_15
 
 repositories {
     mavenCentral()

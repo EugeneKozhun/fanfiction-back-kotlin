@@ -5,6 +5,8 @@ spring:
   profiles:
     active: ${profile:dev}
   jpa:
+    # TODO: investigate
+    # open-in-view: false
     show-sql: ${show-sql:true}
     hibernate:
       ddl-auto: ${ddl-auto:create}
