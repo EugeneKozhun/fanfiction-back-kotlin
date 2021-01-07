@@ -15,7 +15,7 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_15
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -47,6 +47,6 @@ tasks.withType<Test> {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "11"
+        jvmTarget = "15"
     }
 }
