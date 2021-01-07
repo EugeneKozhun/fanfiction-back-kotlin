@@ -18,6 +18,7 @@ class RatingServiceImpl(
 
     @Transactional
     override fun updateRating(ratingUpdateDto: RatingUpdateDto) {
+        // TODO: update current or save new
         Rating().apply {
             value = ratingUpdateDto.value
             fanfic = fanficRepository.findById(ratingUpdateDto.fanficId).orElseThrow()
