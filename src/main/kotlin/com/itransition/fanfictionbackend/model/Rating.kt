@@ -9,13 +9,13 @@ import javax.persistence.Table
 @Table(name = "rating")
 class Rating : WithLongId() {
 
-    var value: Byte? = null
+    var value: Float? = null
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
-    val user: User? = null
+    var user: User? = null
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "fanfic_id")
-    val fanfic: Fanfic? = null
+    var fanfic: Fanfic? = null
 }
