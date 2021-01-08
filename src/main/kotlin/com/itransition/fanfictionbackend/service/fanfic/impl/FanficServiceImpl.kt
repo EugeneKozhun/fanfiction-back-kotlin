@@ -24,6 +24,7 @@ class FanficServiceImpl(
         val fanficsPage = fanficRepository.findAll(pageable)
         return PageWrapper(
             fanficsPage.totalElements,
+            fanficsPage.totalPages,
             fanficsPage.content.map { it.toFanficPreviewDto() }
         )
     }
