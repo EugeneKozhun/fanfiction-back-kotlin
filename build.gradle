@@ -1,0 +1,27 @@
+plugins {
+    id "io.spring.dependency-management" version "1.0.10.RELEASE"
+}
+
+subprojects {
+    group = "com.itransition"
+    version = "0.0.1-SNAPSHOT"
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java-library'
+
+    repositories {
+        jcenter()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:2.4.1")
+        }
+    }
+
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_15
+        targetCompatibility = JavaVersion.VERSION_15
+    }
+}

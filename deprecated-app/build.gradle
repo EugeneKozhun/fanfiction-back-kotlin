@@ -1,0 +1,50 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+    id "org.jetbrains.kotlin.plugin.spring" version '1.4.21'
+    id 'org.springframework.boot' version '2.4.1'
+}
+
+dependencies {
+    // [Kotlin]
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    // [Spring]
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-security"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+
+    // [Jackson]
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin"
+
+    // [Liquibase]
+    implementation "org.liquibase:liquibase-core"
+
+    // [Swagger]
+    implementation "io.springfox:springfox-boot-starter:3.0.0"
+
+    // [JWT]
+    implementation "io.jsonwebtoken:jjwt:0.9.1"
+
+    // [Log4j]
+    implementation "org.apache.logging.log4j:log4j-core:2.14.0"
+
+    // [MySql connector]
+    runtimeOnly "mysql:mysql-connector-java"
+
+    // [Test dependencies]
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+
+    testImplementation "com.h2database:h2"
+    testImplementation "org.springframework.security:spring-security-test"
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = '15'
+    }
+}
