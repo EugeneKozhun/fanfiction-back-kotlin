@@ -5,6 +5,10 @@ plugins {
 }
 
 dependencies {
+    // [Submodules]
+    implementation project(':model')
+    implementation project(':dto')
+
     // [Kotlin]
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "org.jetbrains.kotlin:kotlin-reflect"

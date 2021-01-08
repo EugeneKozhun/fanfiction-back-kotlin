@@ -1,3 +1,6 @@
 rootProject.name = "fanfiction-back-end"
 
-include("deprecated-app")
+include('app-starter')
+include('dto')
+include('model')
+
