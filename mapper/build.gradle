@@ -1,0 +1,10 @@
+dependencies {
+    implementation project(':model')
+    implementation project(':dto')
+
+    def mapstructVersion = '1.4.1.Final'
+    implementation 'org.mapstruct:mapstruct:' + mapstructVersion
+    annotationProcessor 'org.mapstruct:mapstruct-processor:' + mapstructVersion
+
+    implementation "org.springframework.boot:spring-boot-starter"
+}

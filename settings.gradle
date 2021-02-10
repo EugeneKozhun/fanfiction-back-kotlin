@@ -1,6 +1,12 @@
 rootProject.name = "fanfiction-back-end"
 
-include('app-starter')
-include('dto')
-include('model')
+include 'api'
+include 'app-starter'
+include 'common'
+include 'dto'
+include 'mapper'
+include 'model'
+include 'repo'
+include 'security'
+include 'service'
 
