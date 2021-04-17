@@ -3,8 +3,8 @@ plugins {
 }
 
 dependencies {
-    implementation project(':service')
-    implementation project(':dto')
+    api project(':service')
+    api project(':dto')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "org.jetbrains.kotlin:kotlin-reflect"

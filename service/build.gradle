@@ -3,11 +3,11 @@ plugins {
 }
 
 dependencies {
-    implementation project(':repo')
-    implementation project(':mapper')
-    implementation project(':model')
-    implementation project(':dto')
-    implementation project(':security')
+    api project(':repo')
+    api project(':mapper')
+    api project(':model')
+    api project(':dto')
+    api project(':security')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "org.jetbrains.kotlin:kotlin-reflect"

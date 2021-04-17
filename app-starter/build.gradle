@@ -6,9 +6,9 @@ plugins {
 
 dependencies {
     // [Submodules]
-    implementation project(':api')
-    implementation project(':model')
-    implementation project(':dto')
+    api project(':api')
+    api project(':model')
+    api project(':dto')
 
     // [Kotlin]
     implementation "org.jetbrains.kotlin:kotlin-stdlib"

@@ -1,6 +1,6 @@
 dependencies {
-    implementation project(':model')
-    implementation project(':dto')
+    api project(':model')
+    api project(':dto')
 
     def mapstructVersion = '1.4.1.Final'
     implementation 'org.mapstruct:mapstruct:' + mapstructVersion

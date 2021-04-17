@@ -6,7 +6,7 @@ import com.itransition.fanfictionbackend.repository.RoleRepository
 import com.itransition.fanfictionbackend.repository.UserRepository
 import com.itransition.fanfictionbackend.service.signup.SignUpService
 import com.itransition.fanfictionbackend.service.signup.impl.checks.SignUpRequestCheck
-import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional
 open class SignUpServiceImpl(
     private val userRepository: UserRepository,
     private val roleRepository: RoleRepository,
-    private val passwordEncoder: PasswordEncoder,
     private val signUpRequestMapper: SignUpRequestMapper,
     private val signUpRequestChecks: List<SignUpRequestCheck>
 ) : SignUpService {
@@ -26,8 +25,9 @@ open class SignUpServiceImpl(
         // TODO: implement confirmation logic.
         //      send confirm code on email.
 
+        // TODO: use bean
         val userRoles = roleRepository.findByNameIn(signUpRequest.roles)
-        val encodedPassword = passwordEncoder.encode(signUpRequest.password)
+        val encodedPassword = BCryptPasswordEncoder().encode(signUpRequest.password)
         userRepository.save(
             signUpRequestMapper.map(signUpRequest).apply {
                 password = encodedPassword

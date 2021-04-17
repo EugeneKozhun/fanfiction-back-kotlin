@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation project(':model')
+    api project(':model')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "org.jetbrains.kotlin:kotlin-reflect"
